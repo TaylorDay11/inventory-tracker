@@ -42,6 +42,7 @@ button{
     border: 1px solid #000;
     background: #FFF;
     padding: 9px 17px; 
+    color: #000;
 }
 
 button:hover{
@@ -172,7 +173,7 @@ hr{
         float: none;
         width: 100%;
         border-radius: 0px;
-        padding: 10px 0px 15px 0px;
+        padding: 10px 0px 20px 0px;
         margin-top: 15px;
     }
 
@@ -195,7 +196,8 @@ hr{
     }
 
     #export-btn, #clear-btn{
-        margin: 17px 10px 0px 0px;
+        margin: 19px 10px 0px 0px;
+        padding: 7px;
     }
 
     header{
