@@ -161,7 +161,7 @@ hr{
 /* Mobile */
 @media screen and (max-width: 1110px){
     #list-item{
-        width: 150px;
+        width: 190px;
     }
 
     #item-list{
