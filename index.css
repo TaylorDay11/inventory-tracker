@@ -115,6 +115,8 @@ hr{
 
 #list-item{
     width:27%;
+    overflow: hidden;
+    margin-right: 20px;
 }
 
 #add-item{
