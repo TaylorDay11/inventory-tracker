@@ -40,23 +40,21 @@ form.addEventListener("submit", (e) => {
 
 // render item list
 function render(e){
-	let renderItemList = ""
-
-	for (i = 0; i < e.length; i++){
-		renderItemList += `<div id="list-entry">
-								<div id="list-item">${e[i].item}</div>
-								<div id="list-quantity">${e[i].quantity} ${e[i].units}</div>
+	const renderItemList = e.map(function(listItem, index){
+		return `<div id="list-entry">
+								<div id="list-item">${listItem.item}</div>
+								<div id="list-quantity">${listItem.quantity} ${listItem.units}</div>
 								<div id="list-edit-options">
-									<label for="change-quantity-${[i]}">Update Quantity:</label> 
-									<input id="change-quantity-${[i]}" type="number" name="change-quantity-${[i]}">
-									<button id="set-btn" type="submit" onclick="updateItemQuantity(${[i]})">Set</button>
-									<button id="delete-item-btn" ondblclick="deleteItem(${[i]})" type="submit">Delete</button>
-									<button id="up-btn" onclick="moveUp(${[i]})" type="submit">↑</button>
-									<button id="down-btn" onclick="moveDown(${[i]})" type="submit">↓</button>
+									<label for="change-quantity-${index}">Update Quantity:</label> 
+									<input id="change-quantity-${index}" type="number" name="change-quantity-${index}">
+									<button id="set-btn" type="submit" onclick="updateItemQuantity(${index})">Set</button>
+									<button id="delete-item-btn" ondblclick="deleteItem(${index})" type="submit">Delete</button>
+									<button id="up-btn" onclick="moveUp(${index})" type="submit">↑</button>
+									<button id="down-btn" onclick="moveDown(${index})" type="submit">↓</button>
 								</div>
 							</div><br>
 							<hr><br>`
-	}
+	}).join(' ')
 
 	itemList.innerHTML = renderItemList
 	updateLocalStorage()
