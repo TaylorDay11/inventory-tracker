@@ -11,36 +11,12 @@ let itemField = document.getElementById("item")
 let quantityField = document.getElementById("quantity")
 let unitsField = document.getElementById("units")
 
-// if there are already contents in local storage add it to website when it loads
-if (itemsFromLocalStorage) {
-	itemListArray = itemsFromLocalStorage
-    render(itemListArray)
-}
-
-// when form submit button is clicked
-form.addEventListener("submit", (e) => {
-	// prevent page reload when submit button is pressed
-	e.preventDefault()
-
-	// add form entries to array
-	const formObject = createObject(form)
-	console.log(formObject)
-	itemListArray.push(formObject)
-	console.log(itemListArray)
-
-	// display list on website
-	render(itemListArray)
-
-	// clear out form
-	itemField.value = ""
-	quantityField.value = null
-	unitsField.value = ""
-
-})
+// update local storage
+const updateLocalStorage = () => localStorage.setItem("myList", JSON.stringify(itemListArray))
 
 // render item list
-function render(e){
-	const renderItemList = e.map(function(listItem, index){
+const render = (items) => {
+	const renderItemList = items.map(function(listItem, index){
 		return `<div id="list-entry">
 								<div id="list-item">${listItem.item}</div>
 								<div id="list-quantity">${listItem.quantity} ${listItem.units}</div>
@@ -60,8 +36,21 @@ function render(e){
 	updateLocalStorage()
 }
 
+// if there are already contents in local storage add it to website when it loads
+if (itemsFromLocalStorage) {
+	itemListArray = itemsFromLocalStorage
+    render(itemListArray)
+}
+
+// clear local storage
+clearBtn.addEventListener("dblclick", () => {
+    localStorage.clear()
+    itemListArray = []
+    render(itemListArray)
+})
+
 // create an object from form fields
-function createObject(formEntries){
+const createObject = (formEntries) => {
 	const formData = new FormData(formEntries)
 	const obj = {}
 
@@ -72,23 +61,42 @@ function createObject(formEntries){
 	return obj
 }
 
+// when form submit button is clicked
+form.addEventListener("submit", (submitClicked) => {
+	// prevent page reload when submit button is pressed
+	submitClicked.preventDefault()
+
+	// add form entries to array
+	const formObject = createObject(form)
+
+	itemListArray.push(formObject)
+
+	// display list on website
+	render(itemListArray)
+
+	// clear out form
+	itemField.value = ""
+	quantityField.value = null
+	unitsField.value = ""
+
+})
+
 // delete item from list
-function deleteItem(item){
+const deleteItem = item => {
 	itemListArray.splice(item, 1)
 	render(itemListArray)
 }
 
 // update quantity in list
-function updateItemQuantity(item){
+const updateItemQuantity = item => {
 	const newQuantityId = `change-quantity-${item}`
 	const newQuantity = document.getElementById(newQuantityId).value
-	console.log(newQuantity)
 	itemListArray[item].quantity = newQuantity
 	render(itemListArray)
 }
 
 // move list item up
-function moveUp(a){
+const moveUp = a => {
 	const b = a - 1
 	if(a > 0){
 		[itemListArray[b], itemListArray[a]] = [itemListArray[a], itemListArray[b]]
@@ -97,29 +105,16 @@ function moveUp(a){
 }
 
 // move list item dowm
-function moveDown(a){
+const moveDown = a => {
 	const b = a + 1
 	if(a < itemListArray.length){
 		[itemListArray[a], itemListArray[b]] = [itemListArray[b], itemListArray[a]]
-		console.log(itemListArray)
 		render(itemListArray)
 	}
 }
 
-// update local storage
-function updateLocalStorage() {
-	localStorage.setItem("myList", JSON.stringify(itemListArray))
-}
-
-// clear local storage
-clearBtn.addEventListener("dblclick", function() {
-    localStorage.clear()
-    itemListArray = []
-    render(itemListArray)
-})
-
 // export inventory list into csv
-exportBtn.addEventListener("click", function(){
+exportBtn.addEventListener("click", () => {
 	// Convert objects to CSV rows
   const csvRows = itemListArray.map(row => {
     const values = Object.values(row).map(value => {
