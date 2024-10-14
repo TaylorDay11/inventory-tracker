@@ -16,7 +16,7 @@ const updateLocalStorage = () => localStorage.setItem("myList", JSON.stringify(i
 
 // render item list
 const render = (items) => {
-	const renderItemList = items.map(function(listItem, index){
+	const renderItemList = items.map((listItem, index) => {
 		return `<div id="list-entry">
 								<div id="list-item">${listItem.item}</div>
 								<div id="list-quantity">${listItem.quantity} ${listItem.units}</div>
@@ -140,7 +140,7 @@ exportBtn.addEventListener("click", () => {
   const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
   const link = document.createElement('a');
   link.href = URL.createObjectURL(blob);
-  link.setAttribute('download', 'InventoryList.csv');
+  link.setAttribute('download', 'Inventory.csv');
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
