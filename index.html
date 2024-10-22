@@ -8,7 +8,7 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
         <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
@@ -20,10 +20,14 @@
         <div id="container">
 
             <header>
-                <img id="clipboard" src="clipboard.png">
-                <h1>Inventory Tracker</h1>
-                <button id="export-btn">Export List</button>
-                <button id="clear-btn">Clear List</button>
+                <div class="logo">
+                    <img id="clipboard" src="clipboard.png">
+                    <h1>Inventory Tracker</h1>
+                </div>
+                <div class="header-buttons">
+                    <button id="export-btn">Export List</button>
+                    <button id="clear-btn">Clear List</button>
+                </div>
             </header>
 
             <div id="add-item">
@@ -36,7 +40,7 @@
                         <input id="quantity" type="number" name="quantity"><br>
                         <label for="units">Units:</label> 
                         <input id="units" type="text" name="units"><br>
-                        <button id="submit-button" type="submit">Add Item</button>
+                        <button id="submit-button" type="submit">Submit</button>
                     </div>
                 </form>
             </div>
