@@ -128,7 +128,7 @@ input[type="number"] {
 }
 
 #list-item{
-    min-width: 27%;
+    width: 27%;
     overflow: scroll;
 }
 
@@ -165,12 +165,12 @@ hr{
 /* Tablet */
 @media screen and (max-width: 1250px){
     #list-item{
-        min-width: 22%;
+        width: 22%;
     }
 
     #add-item{
         width: 20%;
-        margin: 34px 0px 0px 0px;
+        margin: 34px 22px 0px 0px
     }
 
     #item-list{
@@ -197,7 +197,7 @@ hr{
     }
 
     #list-item {
-        min-width: 20%;
+        width: 20%;
     }
 }
 
@@ -223,7 +223,7 @@ hr{
     }
 
     #list-item{
-        min-width: 35%;
+        width: 35%;
     }
 
     #item-list{
@@ -293,7 +293,7 @@ hr{
 
 @media screen and (max-width: 640px){
     #list-item {
-        min-width: 25%;
+        width: 25%;
         font-size: 13px;
     }
 
@@ -330,7 +330,7 @@ hr{
     }
 
     #list-item {
-        min-width: 20%;
+        width: 20%;
         font-size: 10px;
     }
 
