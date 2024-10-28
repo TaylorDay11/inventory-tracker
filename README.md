@@ -2,7 +2,7 @@
 
 version: 1.0
 
-coding languages: HTML, CSS, & Javascript
+coding languages: HTML, CSS, & JavaScript
 
 created by: Taylor Hershberger
 
